@@ -1,16 +1,21 @@
 // @flow
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-// import RootScreen from 'App/screens/Root';
+import { store, persistor } from 'App/redux/store';
 import AppNavigator from 'App/navigator/AppNavigator';
-
-import theme from './theme';
+import theme from 'App/theme';
 
 const App = (): React$Node => {
   return (
     <ThemeProvider theme={theme}>
-      <AppNavigator />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppNavigator />
+        </PersistGate>
+      </Provider>
     </ThemeProvider>
   );
 };

@@ -1,10 +1,11 @@
 // @flow
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import type { ComponentType } from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 import Torch from 'react-native-torch';
+import { lightEventEmitter } from 'react-native-light';
 
 import Option from './Option';
 
@@ -51,16 +52,30 @@ const OptionsWrapper: ComponentType<{}> = styled(View)`
 const Options = (props: any): React$Node => {
   const dispatch = useDispatch();
 
+  const activeOption = useSelector(state => state.torch.activeOption);
+  const isTorchActive = useSelector(state => state.torch.isTorchActive);
+
+  useEffect(() => {
+    lightEventEmitter.addListener('onLightTurnedOn', () => {
+      alert('you just turned on the light');
+    });
+
+    lightEventEmitter.addListener('onLightTurnedOff', () => {
+      alert('you just turned off the light');
+    });
+  }, []);
+
+  useEffect(() => {
+    Torch.switchState(isTorchActive);
+  }, [isTorchActive]);
+
   const handleOptionPress = useCallback(
     option => {
       dispatch(setActiveOption(option));
+      Torch.switchState(true);
     },
     [dispatch],
   );
-
-  const activeOption = useSelector(state => state.torch.activeOption);
-
-  console.log('activeOption', activeOption);
 
   return (
     <OptionsWrapper {...props}>

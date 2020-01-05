@@ -8,6 +8,7 @@ import Text from 'App/components/Text';
 const OptionWrapper: ComponentType<{}> = styled.TouchableOpacity`
   width: 50%;
   padding: 16px;
+  margin-bottom: 15;
   justify-content: center;
   align-items: center;
   height: ${({ height }) => height || 'auto'};

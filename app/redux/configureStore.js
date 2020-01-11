@@ -1,6 +1,6 @@
 // @flow
 import AsyncStorage from '@react-native-community/async-storage';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 
 import rootReducer from './rootReducer';
@@ -9,12 +9,19 @@ export default () => {
   const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: ['torch', 'settings'],
+    whitelist: ['torch.activeOption', 'settings'],
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-  const store = createStore(persistedReducer, applyMiddleware());
+  // redux developer tools
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+  const store = createStore(
+    persistedReducer,
+    composeEnhancers(applyMiddleware()),
+  );
 
   const persistor = persistStore(store);
 

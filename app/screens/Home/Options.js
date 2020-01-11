@@ -4,12 +4,11 @@ import type { ComponentType } from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
-import Torch from 'react-native-torch';
-import { lightEventEmitter } from 'react-native-light';
+// import Torch from 'react-native-torch';
 
 import Option from './Option';
 
-import { torchActions } from 'App/redux/ducks/torch';
+import { setActiveOption } from 'App/redux/ducks/torch/actions';
 
 import MorseIcon from 'App/assets/icons/morse.svg';
 import SosIcon from 'App/assets/icons/sos.svg';
@@ -17,8 +16,6 @@ import StrobeIcon from 'App/assets/icons/strobe.svg';
 import TorchIcon from 'App/assets/icons/torch.svg';
 
 import { LIGHT_TYPES } from 'App/constants';
-
-const { setActiveOption } = torchActions;
 
 // type Props = {
 //   data: Array<any>,
@@ -53,26 +50,18 @@ const Options = (props: any): React$Node => {
   const dispatch = useDispatch();
 
   const activeOption = useSelector(state => state.torch.activeOption);
-  const isTorchActive = useSelector(state => state.torch.isTorchActive);
+  // const isTorchActive = useSelector(state => state.torch.isTorchActive);
 
-  useEffect(() => {
-    lightEventEmitter.addListener('onLightTurnedOn', () => {
-      alert('you just turned on the light');
-    });
+  // useEffect(() => {}, []);
 
-    lightEventEmitter.addListener('onLightTurnedOff', () => {
-      alert('you just turned off the light');
-    });
-  }, []);
-
-  useEffect(() => {
-    Torch.switchState(isTorchActive);
-  }, [isTorchActive]);
+  // useEffect(() => {
+  //   Torch.switchState(isTorchActive);
+  // }, [isTorchActive]);
 
   const handleOptionPress = useCallback(
     option => {
       dispatch(setActiveOption(option));
-      Torch.switchState(true);
+      // Torch.switchState(true);
     },
     [dispatch],
   );

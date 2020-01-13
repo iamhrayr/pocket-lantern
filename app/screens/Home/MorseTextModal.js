@@ -52,9 +52,7 @@ const MorseTextModal = ({ isVisible, onClose }): React$Node => {
       animationType="slide"
       transparent={false}
       visible={isVisible}
-      onRequestClose={() => {
-        Alert.alert('Modal has been closed.');
-      }}>
+      onRequestClose={onClose}>
       <ContentWrapper>
         <Text>Type message to encode into morse</Text>
         <StyledTextInput onChangeText={handleTextChange} value={value} />

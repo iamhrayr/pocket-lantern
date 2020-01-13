@@ -32,11 +32,13 @@ const StyledText: ComponentType<{}> = styled(Text)`
 const AddonWrapper: ComponentType<{}> = styled.TouchableOpacity`
   width: 40;
   height: 40;
-  background: red;
+  background: ${({ theme }) => theme.colors.secondary};
   position: absolute;
   border-radius: 50;
   bottom: 15;
   right: 15;
+  align-items: center;
+  justify-content: center;
 `;
 
 type Props = {
@@ -68,6 +70,7 @@ const Option = ({
         <Icon width="55%" height="55%" />
       </IconWrapper>
       <StyledText color="darkLight">{text}</StyledText>
+
       {addon && active && (
         <AddonWrapper onPress={onAddonPress}>{addon}</AddonWrapper>
       )}

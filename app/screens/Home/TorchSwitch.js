@@ -42,6 +42,7 @@ const TorchSwitch = (): React$Node => {
   const dispatch = useDispatch();
   const isTorchActive = useSelector(state => state.torch.isTorchActive);
   const activeOption = useSelector(state => state.torch.activeOption);
+  const morseText = useSelector(state => state.torch.morseText);
 
   useEffect(() => {
     const cb = () => {
@@ -59,7 +60,7 @@ const TorchSwitch = (): React$Node => {
   const turnOn = useCallback(() => {
     switch (activeOption) {
       case LIGHT_TYPES.MORSE:
-        morse.start('test');
+        morse.start(morseText);
         break;
       case LIGHT_TYPES.SOS:
         morse.start('sos');
@@ -71,7 +72,7 @@ const TorchSwitch = (): React$Node => {
         Torch.switchState(true);
         break;
     }
-  }, [activeOption]);
+  }, [activeOption, morseText]);
 
   const turnOff = useCallback(() => {
     strobe.stop();

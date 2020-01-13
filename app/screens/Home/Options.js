@@ -1,12 +1,14 @@
 // @flow
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import type { ComponentType } from 'react';
 import { View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import styled from 'styled-components/native';
 // import Torch from 'react-native-torch';
 
 import Option from './Option';
+import MorseTextModal from './MorseTextModal';
 
 import { setActiveOption } from 'App/redux/ducks/torch/actions';
 
@@ -47,8 +49,8 @@ const OptionsWrapper: ComponentType<{}> = styled(View)`
 `;
 
 const Options = (props: any): React$Node => {
+  const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
-
   const activeOption = useSelector(state => state.torch.activeOption);
 
   const handleOptionPress = useCallback(
@@ -60,28 +62,35 @@ const Options = (props: any): React$Node => {
 
   const renderAddon = useCallback(type => {
     if (type === LIGHT_TYPES.MORSE) {
-      return <Text>LL</Text>;
+      return <Icon name="font" size={18} />;
     }
   }, []);
 
   const handleAddonPress = useCallback(type => {
-    // handle addonPress
+    setModalVisible(true);
   }, []);
 
   return (
-    <OptionsWrapper {...props}>
-      {data.map(item => (
-        <Option
-          key={item.type}
-          icon={item.icon}
-          text={item.type}
-          active={item.type === activeOption}
-          onPress={() => handleOptionPress(item.type)}
-          onAddonPress={handleAddonPress}
-          addon={renderAddon(item.type)}
-        />
-      ))}
-    </OptionsWrapper>
+    <>
+      <OptionsWrapper {...props}>
+        {data.map(item => (
+          <Option
+            key={item.type}
+            icon={item.icon}
+            text={item.type}
+            active={item.type === activeOption}
+            onPress={() => handleOptionPress(item.type)}
+            onAddonPress={handleAddonPress}
+            addon={renderAddon(item.type)}
+          />
+        ))}
+      </OptionsWrapper>
+
+      <MorseTextModal
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+      />
+    </>
   );
 };
 

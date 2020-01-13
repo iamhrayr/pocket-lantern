@@ -1,7 +1,7 @@
 // @flow
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import type { ComponentType } from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 // import Torch from 'react-native-torch';
@@ -23,19 +23,19 @@ import { LIGHT_TYPES } from 'App/constants';
 
 const data: Array<any> = [
   {
-    text: LIGHT_TYPES.TORCH,
+    type: LIGHT_TYPES.TORCH,
     icon: TorchIcon,
   },
   {
-    text: LIGHT_TYPES.SOS,
+    type: LIGHT_TYPES.SOS,
     icon: SosIcon,
   },
   {
-    text: LIGHT_TYPES.STROBE,
+    type: LIGHT_TYPES.STROBE,
     icon: StrobeIcon,
   },
   {
-    text: LIGHT_TYPES.MORSE,
+    type: LIGHT_TYPES.MORSE,
     icon: MorseIcon,
   },
 ];
@@ -50,31 +50,35 @@ const Options = (props: any): React$Node => {
   const dispatch = useDispatch();
 
   const activeOption = useSelector(state => state.torch.activeOption);
-  // const isTorchActive = useSelector(state => state.torch.isTorchActive);
-
-  // useEffect(() => {}, []);
-
-  // useEffect(() => {
-  //   Torch.switchState(isTorchActive);
-  // }, [isTorchActive]);
 
   const handleOptionPress = useCallback(
     option => {
       dispatch(setActiveOption(option));
-      // Torch.switchState(true);
     },
     [dispatch],
   );
+
+  const renderAddon = useCallback(type => {
+    if (type === LIGHT_TYPES.MORSE) {
+      return <Text>LL</Text>;
+    }
+  }, []);
+
+  const handleAddonPress = useCallback(type => {
+    // handle addonPress
+  }, []);
 
   return (
     <OptionsWrapper {...props}>
       {data.map(item => (
         <Option
-          key={item.text}
+          key={item.type}
           icon={item.icon}
-          text={item.text}
-          active={item.text === activeOption}
-          onPress={() => handleOptionPress(item.text)}
+          text={item.type}
+          active={item.type === activeOption}
+          onPress={() => handleOptionPress(item.type)}
+          onAddonPress={handleAddonPress}
+          addon={renderAddon(item.type)}
         />
       ))}
     </OptionsWrapper>

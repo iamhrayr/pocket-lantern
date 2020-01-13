@@ -1,16 +1,16 @@
 // @flow
-import React, { useCallback, useEffect, useRef, memo } from 'react';
+import React, { useCallback, useEffect, memo } from 'react';
 import { StyleSheet } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { useDispatch, useSelector } from 'react-redux';
 import Torch from 'react-native-torch';
 
 import { LIGHT_TYPES } from 'App/constants';
-import Morse from 'App/helpers/morse';
+import morse from 'App/helpers/morse';
 import strobe from 'App/helpers/strobe';
 import PowerIcon from 'App/assets/icons/power.svg';
 
-import { torchToggle } from 'App/redux/ducks/torch/actions';
+import { torchToggle, torchTurnOff } from 'App/redux/ducks/torch/actions';
 
 const Wrapper = styled.View`
   ${({ theme }) => css`
@@ -38,31 +38,25 @@ const StyledPowerIcon = styled(PowerIcon)`
     isActive ? theme.colors.primary : theme.colors.darkLight};
 `;
 
-const s = strobe();
-const morse = new Morse({
-  turnLightOn: () => Torch.switchState(true),
-  turnLightOff: () => Torch.switchState(false),
-});
-
 const TorchSwitch = (): React$Node => {
   const dispatch = useDispatch();
   const isTorchActive = useSelector(state => state.torch.isTorchActive);
   const activeOption = useSelector(state => state.torch.activeOption);
 
   useEffect(() => {
-    const fn = () => {
-      alert('finished');
+    const cb = () => {
+      dispatch(torchTurnOff());
     };
 
-    morse.addEventListener('finish', fn);
+    morse.addEventListener('finish', cb);
+
     return () => {
-      morse.removeEventListener('finish', fn);
+      morse.removeEventListener('finish', cb);
       morse.stop();
     };
-  }, []);
+  }, [dispatch]);
 
   const turnOn = useCallback(() => {
-    console.log('here?', activeOption);
     switch (activeOption) {
       case LIGHT_TYPES.MORSE:
         morse.start('test');
@@ -71,7 +65,7 @@ const TorchSwitch = (): React$Node => {
         morse.start('sos');
         break;
       case LIGHT_TYPES.STROBE:
-        s.start(); // TODO: name fix
+        strobe.start();
         break;
       case LIGHT_TYPES.TORCH:
         Torch.switchState(true);
@@ -80,19 +74,10 @@ const TorchSwitch = (): React$Node => {
   }, [activeOption]);
 
   const turnOff = useCallback(() => {
-    switch (activeOption) {
-      case LIGHT_TYPES.MORSE:
-      case LIGHT_TYPES.SOS:
-        morse.stop();
-        break;
-      case LIGHT_TYPES.STROBE:
-        s.stop(); // TODO: name fix
-        break;
-      case LIGHT_TYPES.TORCH:
-        Torch.switchState(false);
-        break;
-    }
-  }, [activeOption]);
+    strobe.stop();
+    morse.stop();
+    Torch.switchState(false);
+  }, []);
 
   useEffect(() => {
     isTorchActive ? turnOn() : turnOff();

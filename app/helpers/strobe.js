@@ -2,24 +2,24 @@ import Torch from 'react-native-torch';
 
 import { STROBE_DURATION } from 'App/constants';
 
-const strobe = () => {
-  let intervalId;
-  let status = true;
+class Strobe {
+  constructor() {
+    this._intervalId;
+    this._status = true;
+  }
 
-  return {
-    start() {
-      Torch.switchState(status);
+  start() {
+    Torch.switchState(this._status);
 
-      intervalId = setInterval(() => {
-        Torch.switchState(!status);
-        status = !status;
-      }, STROBE_DURATION);
-    },
+    this._intervalId = setInterval(() => {
+      Torch.switchState(!this._status);
+      this._status = !this._status;
+    }, STROBE_DURATION);
+  }
 
-    stop() {
-      clearInterval(intervalId);
-    },
-  };
-};
+  stop() {
+    clearInterval(this._intervalId);
+  }
+}
 
-export default strobe;
+export default new Strobe();

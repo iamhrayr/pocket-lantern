@@ -29,14 +29,33 @@ const StyledText: ComponentType<{}> = styled(Text)`
   bottom: -5;
 `;
 
+const AddonWrapper: ComponentType<{}> = styled.TouchableOpacity`
+  width: 40;
+  height: 40;
+  background: red;
+  position: absolute;
+  border-radius: 50;
+  bottom: 15;
+  right: 15;
+`;
+
 type Props = {
   onPress?: Function,
   icon: ComponentType<{}>,
   text: string,
   active?: boolean,
+  addon?: React$Node,
+  onAddonPress?: Function,
 };
 
-const Option = ({ onPress, icon: Icon, text, active }: Props): React$Node => {
+const Option = ({
+  onPress,
+  icon: Icon,
+  text,
+  active,
+  addon,
+  onAddonPress,
+}: Props): React$Node => {
   const [height, setHeight] = useState(null);
 
   const handleOnLayout = useCallback(event => {
@@ -49,6 +68,9 @@ const Option = ({ onPress, icon: Icon, text, active }: Props): React$Node => {
         <Icon width="55%" height="55%" />
       </IconWrapper>
       <StyledText color="darkLight">{text}</StyledText>
+      {addon && active && (
+        <AddonWrapper onPress={onAddonPress}>{addon}</AddonWrapper>
+      )}
     </OptionWrapper>
   );
 };

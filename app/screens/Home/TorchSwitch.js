@@ -14,8 +14,7 @@ import { torchToggle, torchTurnOff } from 'App/redux/ducks/torch/actions';
 
 const Wrapper = styled.View`
   ${({ theme }) => css`
-    background-color: ${theme.colors.dark};
-    height: 50;
+    height: 140;
     margin-top: auto;
   `}
 `;
@@ -31,6 +30,16 @@ const Circle = styled.TouchableOpacity`
   margin-left: -70;
   align-items: center;
   justify-content: center;
+  z-index: 2;
+`;
+
+const BottomLine = styled.View`
+  height: 50;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.dark};
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
 `;
 
 const StyledPowerIcon = styled(PowerIcon)`
@@ -45,10 +54,7 @@ const TorchSwitch = (): React$Node => {
   const morseText = useSelector(state => state.torch.morseText);
 
   useEffect(() => {
-    const cb = () => {
-      dispatch(torchTurnOff());
-    };
-
+    const cb = () => dispatch(torchTurnOff());
     morse.addEventListener('finish', cb);
 
     return () => {
@@ -93,6 +99,7 @@ const TorchSwitch = (): React$Node => {
       <Circle onPress={handlePowerPress}>
         <StyledPowerIcon style={styles.icon} isActive={isTorchActive} />
       </Circle>
+      <BottomLine />
     </Wrapper>
   );
 };

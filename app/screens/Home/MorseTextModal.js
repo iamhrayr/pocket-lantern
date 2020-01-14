@@ -1,12 +1,5 @@
 import React, { useCallback } from 'react';
-import {
-  Modal,
-  Text,
-  TouchableHighlight,
-  View,
-  Alert,
-  TextInput,
-} from 'react-native';
+import { Modal, Text, TouchableHighlight, View, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import { useDispatch, useSelector } from 'react-redux';
 

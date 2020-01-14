@@ -1,13 +1,15 @@
 # Android
 
-:Release
+**Release**
 build apk - `./gradlew assembleRelease`
+
 bundle aab - `./gradlew bundleRelease`
 
-:debug
+**debug**
 build apk - `./gradlew assembleDebug`
+
 bundle aab - `./gradlew bundleDebug`
 
-# throubleshoots
+# troubleshoots
 
 in any unexpected issue run: `./gradlew clean`

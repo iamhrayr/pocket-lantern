@@ -9,6 +9,7 @@ import { LIGHT_TYPES } from 'App/constants';
 import morse from 'App/helpers/morse';
 import strobe from 'App/helpers/strobe';
 import PowerIcon from 'App/assets/icons/power.svg';
+import useAnalyticsEvent from 'App/hooks/useAnalyticsEvent';
 
 import { torchToggle, torchTurnOff } from 'App/redux/ducks/torch/actions';
 
@@ -52,6 +53,7 @@ const TorchSwitch = (): React$Node => {
   const isTorchActive = useSelector(state => state.torch.isTorchActive);
   const activeOption = useSelector(state => state.torch.activeOption);
   const morseText = useSelector(state => state.torch.morseText);
+  const fireEvent = useAnalyticsEvent();
 
   useEffect(() => {
     const cb = () => dispatch(torchTurnOff());
@@ -67,32 +69,38 @@ const TorchSwitch = (): React$Node => {
     switch (activeOption) {
       case LIGHT_TYPES.MORSE:
         morse.start(morseText);
+        fireEvent('MORSE_TURNED_ON');
         break;
       case LIGHT_TYPES.SOS:
         morse.start('sos');
+        fireEvent('SOS_TURNED_ON');
         break;
       case LIGHT_TYPES.STROBE:
         strobe.start();
+        fireEvent('STROBE_TURNED_ON');
         break;
       case LIGHT_TYPES.TORCH:
         Torch.switchState(true);
+        fireEvent('FLASHLIGHT_TURNED_ON');
         break;
     }
-  }, [activeOption, morseText]);
+  }, [activeOption, fireEvent, morseText]);
 
   const turnOff = useCallback(() => {
+    fireEvent('TURN_OFF_BUTTON_PRESSED');
     strobe.stop();
     morse.stop();
     Torch.switchState(false);
-  }, []);
+  }, [fireEvent]);
 
   useEffect(() => {
     isTorchActive ? turnOn() : turnOff();
   }, [isTorchActive, turnOff, turnOn]);
 
   const handlePowerPress = useCallback(() => {
+    fireEvent('TURN_ON_BUTTON_PRESSED');
     dispatch(torchToggle());
-  }, [dispatch]);
+  }, [dispatch, fireEvent]);
 
   return (
     <Wrapper>

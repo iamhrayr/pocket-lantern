@@ -14,6 +14,7 @@ import MorseIcon from 'App/assets/icons/morse.svg';
 import SosIcon from 'App/assets/icons/sos.svg';
 import StrobeIcon from 'App/assets/icons/strobe.svg';
 import TorchIcon from 'App/assets/icons/torch.svg';
+import useAnalyticsEvent from 'App/hooks/useAnalyticsEvent';
 import { LIGHT_TYPES } from 'App/constants';
 
 const data: Array<any> = [
@@ -45,12 +46,14 @@ const Options = (props: any): React$Node => {
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
   const activeOption = useSelector(state => state.torch.activeOption);
+  const fireEvent = useAnalyticsEvent();
 
   const handleOptionPress = useCallback(
     option => {
+      fireEvent('SET_ACTIVE_OPTION', { option });
       dispatch(setActiveOption(option));
     },
-    [dispatch],
+    [dispatch, fireEvent],
   );
 
   const renderAddon = useCallback(type => {

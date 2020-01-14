@@ -3,6 +3,7 @@ import { Modal, Text, TouchableHighlight, View, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import { useDispatch, useSelector } from 'react-redux';
 
+import useScreenTrack from 'App/hooks/useScreenTrack';
 import { setMorseText } from 'App/redux/ducks/torch/actions';
 
 const SubmitButton = styled(TouchableHighlight)`
@@ -30,6 +31,8 @@ const StyledTextInput = styled(TextInput)`
 `;
 
 const MorseTextModal = ({ isVisible, onClose }): React$Node => {
+  useScreenTrack('MORSE_TEXT_EDIT_SCREEN');
+
   const dispatch = useDispatch();
   const value = useSelector(state => state.torch.morseText);
 

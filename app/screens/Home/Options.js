@@ -1,27 +1,20 @@
 // @flow
 import React, { useCallback, useState } from 'react';
 import type { ComponentType } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styled from 'styled-components/native';
-// import Torch from 'react-native-torch';
 
 import Option from './Option';
 import MorseTextModal from './MorseTextModal';
 
 import { setActiveOption } from 'App/redux/ducks/torch/actions';
-
 import MorseIcon from 'App/assets/icons/morse.svg';
 import SosIcon from 'App/assets/icons/sos.svg';
 import StrobeIcon from 'App/assets/icons/strobe.svg';
 import TorchIcon from 'App/assets/icons/torch.svg';
-
 import { LIGHT_TYPES } from 'App/constants';
-
-// type Props = {
-//   data: Array<any>,
-// };
 
 const data: Array<any> = [
   {

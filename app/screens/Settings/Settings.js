@@ -8,6 +8,7 @@ import {
   changeSettings,
   resetSettings,
 } from 'App/redux/ducks/settings/actions';
+import useScreenTrack from 'App/hooks/useScreenTrack';
 import Text from 'App/components/Text';
 import Container from 'App/components/Container';
 import SwitchRow from 'App/components/SwitchRow';
@@ -25,6 +26,8 @@ const ButtonGroup = styled.View`
 `;
 
 const Settings = (): React$Node => {
+  useScreenTrack('SETTINGS_SCREEN');
+
   const dispatch = useDispatch();
   const settings = useSelector(state => state.settings);
   const { goBack } = useNavigation();

@@ -12,4 +12,16 @@ bundle aab - `./gradlew bundleDebug`
 
 # troubleshoots
 
-in any unexpected issue run: `./gradlew clean`
+- in any unexpected issue run: `./gradlew clean`
+
+- if there is a mismatch with the versions with `node_modules/react-native-torch/android/build.gradle`, edit:
+
+```
+  compileSdkVersion 28
+  buildToolsVersion "28.0.3"
+
+  defaultConfig {
+      minSdkVersion 16
+      targetSdkVersion 28
+  }
+```

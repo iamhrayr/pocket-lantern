@@ -124,20 +124,19 @@ const TorchSwitch = (): React$Node => {
   }, [activeOption, fireEvent, morseText]);
 
   const turnOff = useCallback(() => {
-    fireEvent('TURN_OFF_BUTTON_PRESSED');
     strobeRef.current.stop();
     morseRef.current.stop();
     Torch.switchState(false);
-  }, [fireEvent]);
+  }, []);
 
   useEffect(() => {
     isTorchActive ? turnOn() : turnOff();
   }, [isTorchActive, turnOff, turnOn]);
 
   const handlePowerPress = useCallback(() => {
-    fireEvent('TURN_ON_BUTTON_PRESSED');
+    fireEvent('TOGGLE_BUTTON_PRESSED', { status: isTorchActive });
     dispatch(torchToggle());
-  }, [dispatch, fireEvent]);
+  }, [dispatch, fireEvent, isTorchActive]);
 
   return (
     <Wrapper>

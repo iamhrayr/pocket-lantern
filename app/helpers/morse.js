@@ -6,7 +6,14 @@ import { MORSE_DURATIONS, MORSE_CODES_MAP } from 'App/constants';
 const events = new EventEmitter();
 
 class Morse {
-  constructor({ text, turnLightOn, turnLightOff }) {
+  constructor({
+    text,
+    turnLightOn,
+    turnLightOff,
+    longDuration = MORSE_DURATIONS.LONG,
+    shortDuration = MORSE_DURATIONS.SHORT,
+    pauseDuration = MORSE_DURATIONS.PAUSE,
+  }) {
     this._started = false;
     this.turnLightOn = turnLightOn.bind(this);
     this.turnLightOff = turnLightOff.bind(this);
@@ -25,6 +32,18 @@ class Morse {
     return new Promise(resolve => {
       setTimeout(() => resolve(fn()), ms);
     });
+  }
+
+  getLongDuration() {
+    return this.longDuration;
+  }
+
+  getShortDuration() {
+    return this.shortDuration;
+  }
+
+  getPauseDuration() {
+    return this.pauseDuration;
   }
 
   encode(txt) {
@@ -58,17 +77,19 @@ class Morse {
 
       if (code === '_') {
         this.turnLightOn();
-        await this.sleep(this.turnLightOff, MORSE_DURATIONS.LONG);
+        await this.sleep(this.turnLightOff, this.getLongDuration());
       } else if (code === '.') {
         this.turnLightOn();
-        await this.sleep(this.turnLightOff, MORSE_DURATIONS.SHORT);
+        await this.sleep(this.turnLightOff, this.getShortDuration());
       }
 
-      await this.sleep(this.turnLightOff, MORSE_DURATIONS.PAUSE);
+      await this.sleep(this.turnLightOff, this.getPauseDuration());
     }
 
     events.emit('finish');
   }
+
+  // changeDuration(newDuration) {}
 
   addEventListener(event, fn) {
     events.on(event, fn);
@@ -79,7 +100,9 @@ class Morse {
   }
 }
 
-export default new Morse({
-  turnLightOn: () => Torch.switchState(true),
-  turnLightOff: () => Torch.switchState(false),
-});
+// export default new Morse({
+//   turnLightOn: () => Torch.switchState(true),
+//   turnLightOff: () => Torch.switchState(false),
+// });
+
+export default Morse;

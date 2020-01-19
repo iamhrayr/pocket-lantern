@@ -53,6 +53,8 @@ const MorseTextModal = ({ isVisible, onClose }): React$Node => {
         <Text>Type message to encode into morse</Text>
         <StyledTextInput onChangeText={handleTextChange} value={value} />
 
+        {!value && <Text>Please fill text field!</Text>}
+
         <SubmitButton onPress={onClose}>
           <Text style={{ color: '#fff' }}>Close</Text>
         </SubmitButton>

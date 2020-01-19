@@ -1,13 +1,13 @@
 // @flow
-import React, { useCallback, useEffect, memo } from 'react';
+import React, { useCallback, useEffect, useRef, memo } from 'react';
 import { StyleSheet } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { useDispatch, useSelector } from 'react-redux';
 import Torch from 'react-native-torch';
 
 import { LIGHT_TYPES } from 'App/constants';
-import morse from 'App/helpers/morse';
-import strobe from 'App/helpers/strobe';
+import Morse from 'App/helpers/morse';
+import Strobe from 'App/helpers/strobe';
 import PowerIcon from 'App/assets/icons/power.svg';
 import useAnalyticsEvent from 'App/hooks/useAnalyticsEvent';
 
@@ -18,6 +18,11 @@ const Wrapper = styled.View`
     height: 140;
     margin-top: auto;
   `}
+`;
+
+const StyledPowerIcon = styled(PowerIcon)`
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.primary : theme.colors.darkLight};
 `;
 
 const Circle = styled.TouchableOpacity`
@@ -43,40 +48,72 @@ const BottomLine = styled.View`
   z-index: 1;
 `;
 
-const StyledPowerIcon = styled(PowerIcon)`
-  color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.primary : theme.colors.darkLight};
-`;
-
 const TorchSwitch = (): React$Node => {
   const dispatch = useDispatch();
   const isTorchActive = useSelector(state => state.torch.isTorchActive);
   const activeOption = useSelector(state => state.torch.activeOption);
   const morseText = useSelector(state => state.torch.morseText);
+  const strobeDuration = useSelector(state => state.settings.strobeDuration);
   const fireEvent = useAnalyticsEvent();
+  const morseLongDuration = useSelector(
+    state => state.settings.morseLongDuration,
+  );
+  const morseShortDuration = useSelector(
+    state => state.settings.morseShortDuration,
+  );
+  const morsePauseDuration = useSelector(
+    state => state.settings.morsePauseDuration,
+  );
+
+  const morseRef = useRef(
+    new Morse({
+      turnLightOn: () => Torch.switchState(true),
+      turnLightOff: () => Torch.switchState(false),
+      longDuration: morseLongDuration,
+      shortDuration: morseShortDuration,
+      pauseDuration: morsePauseDuration,
+    }),
+  );
+
+  const strobeRef = useRef(
+    new Strobe({
+      duration: strobeDuration,
+    }),
+  );
+
+  useEffect(() => {
+    morseRef.current.longDuration = morseLongDuration;
+    morseRef.current.shortDuration = morseShortDuration;
+    morseRef.current.pauseDuration = morsePauseDuration;
+  }, [morseLongDuration, morsePauseDuration, morseShortDuration]);
+
+  useEffect(() => {
+    strobeRef.current.changeDuration(strobeDuration);
+  }, [strobeDuration]);
 
   useEffect(() => {
     const cb = () => dispatch(torchTurnOff());
-    morse.addEventListener('finish', cb);
+    const m = morseRef.current;
+    m.addEventListener('finish', cb);
 
     return () => {
-      morse.removeEventListener('finish', cb);
-      morse.stop();
+      m.removeEventListener('finish', cb);
+      m.stop();
     };
   }, [dispatch]);
 
   const turnOn = useCallback(() => {
     switch (activeOption) {
       case LIGHT_TYPES.MORSE:
-        morse.start(morseText);
+        morseRef.current.start(morseText);
         fireEvent('MORSE_TURNED_ON');
         break;
       case LIGHT_TYPES.SOS:
-        morse.start('sos');
+        morseRef.current.start('sos');
         fireEvent('SOS_TURNED_ON');
         break;
       case LIGHT_TYPES.STROBE:
-        strobe.start();
+        strobeRef.current.start();
         fireEvent('STROBE_TURNED_ON');
         break;
       case LIGHT_TYPES.TORCH:
@@ -88,8 +125,8 @@ const TorchSwitch = (): React$Node => {
 
   const turnOff = useCallback(() => {
     fireEvent('TURN_OFF_BUTTON_PRESSED');
-    strobe.stop();
-    morse.stop();
+    strobeRef.current.stop();
+    morseRef.current.stop();
     Torch.switchState(false);
   }, [fireEvent]);
 
@@ -104,7 +141,9 @@ const TorchSwitch = (): React$Node => {
 
   return (
     <Wrapper>
-      <Circle onPress={handlePowerPress}>
+      <Circle
+        onPress={handlePowerPress}
+        disabled={activeOption === LIGHT_TYPES.MORSE && !morseText}>
         <StyledPowerIcon style={styles.icon} isActive={isTorchActive} />
       </Circle>
       <BottomLine />

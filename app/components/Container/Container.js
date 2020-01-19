@@ -11,22 +11,28 @@ const Wrapper = styled.View`
   flex: 1;
   background-color: ${({ theme, transparent }) =>
     transparent ? 'transparent' : theme.colors.grey};
+  padding: ${({ withPadding }) => (withPadding ? '10px' : 0)};
 `;
 
 type Props = {
   transparent: boolean,
   children: React$Node,
+  withPadding: boolean,
 };
 
-const Container = ({ transparent, children }: Props): React$Node => {
+const Container = ({
+  transparent,
+  withPadding = true,
+  children,
+}: Props): React$Node => {
   return (
-    <StyledSafeAreaView>
-      <Wrapper transparent={transparent}>
+    <Wrapper transparent={transparent} withPadding={withPadding}>
+      <StyledSafeAreaView>
         <ScrollView contentContainerStyle={styles.contentContainer}>
           {children}
         </ScrollView>
-      </Wrapper>
-    </StyledSafeAreaView>
+      </StyledSafeAreaView>
+    </Wrapper>
   );
 };
 

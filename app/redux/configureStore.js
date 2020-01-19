@@ -5,11 +5,16 @@ import { persistStore, persistReducer } from 'redux-persist';
 
 import rootReducer from './rootReducer';
 
+// AsyncStorage.clear();
+
 export default () => {
   const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: ['torch.activeOption', 'settings'],
+    whitelist: [
+      // 'torch.activeOption',
+      'settings',
+    ],
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);

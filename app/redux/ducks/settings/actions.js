@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { SAVE_SETTINGS } from './types';
+import { CHANGE_SETTINGS, RESET_SETTINGS } from './types';
 
-export const saveSettings = createAction(SAVE_SETTINGS);
+export const changeSettings = createAction(CHANGE_SETTINGS);
+export const resetSettings = createAction(RESET_SETTINGS);

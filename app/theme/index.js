@@ -7,10 +7,12 @@ export default {
     gray2: '#404E5A',
     dark: '#273948',
     darkLight: '#748A9D',
+    white: '#fff',
+    ghost: 'transparent',
   },
   font: {
-    small: 12,
+    small: 10,
     medium: 16,
-    large: 20,
+    large: 22,
   },
 };

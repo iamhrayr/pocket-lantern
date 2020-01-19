@@ -42,7 +42,6 @@ const AddonWrapper: ComponentType<{}> = styled.TouchableOpacity`
 `;
 
 type Props = {
-  onPress?: Function,
   icon: ComponentType<{}>,
   text: string,
   active?: boolean,
@@ -51,12 +50,12 @@ type Props = {
 };
 
 const Option = ({
-  onPress,
   icon: Icon,
   text,
   active,
   addon,
   onAddonPress,
+  ...props
 }: Props): React$Node => {
   const [height, setHeight] = useState(null);
 
@@ -65,7 +64,7 @@ const Option = ({
   }, []);
 
   return (
-    <OptionWrapper height={height} onLayout={handleOnLayout} onPress={onPress}>
+    <OptionWrapper height={height} onLayout={handleOnLayout} {...props}>
       <IconWrapper active={active}>
         <Icon width="55%" height="55%" />
       </IconWrapper>

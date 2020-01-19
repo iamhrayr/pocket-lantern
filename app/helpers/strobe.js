@@ -5,7 +5,7 @@ import { STROBE_DURATION } from 'App/constants';
 class Strobe {
   constructor({ duration = STROBE_DURATION }) {
     this._intervalId;
-    this._status = true;
+    this._status = false;
     this._duration = duration;
   }
 
@@ -23,9 +23,11 @@ class Strobe {
   }
 
   changeDuration(newDuration) {
-    this.stop();
-    this._duration = newDuration;
-    this.start();
+    if (this._status) {
+      this.stop();
+      this._duration = newDuration;
+      this.start();
+    }
   }
 }
 

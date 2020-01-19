@@ -1,5 +1,4 @@
 import EventEmitter from 'eventemitter3';
-import Torch from 'react-native-torch';
 
 import { MORSE_DURATIONS, MORSE_CODES_MAP } from 'App/constants';
 
@@ -89,8 +88,6 @@ class Morse {
     events.emit('finish');
   }
 
-  // changeDuration(newDuration) {}
-
   addEventListener(event, fn) {
     events.on(event, fn);
   }
@@ -99,10 +96,5 @@ class Morse {
     events.removeListener(event, fn);
   }
 }
-
-// export default new Morse({
-//   turnLightOn: () => Torch.switchState(true),
-//   turnLightOff: () => Torch.switchState(false),
-// });
 
 export default Morse;

@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import React, { memo } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -14,8 +15,8 @@ type Props = {
   children: React$Node,
 };
 
-const ListItem = ({ children }: Props): React$Node => {
-  return <Wrapper>{children}</Wrapper>;
-};
+const ListItem = ({ children }: Props): React$Node => (
+  <Wrapper>{children}</Wrapper>
+);
 
-export default ListItem;
+export default memo<Props>(ListItem);

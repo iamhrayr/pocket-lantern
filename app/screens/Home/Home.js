@@ -1,5 +1,5 @@
 // @flow
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -41,4 +41,4 @@ const Home = (): React$Node => {
   );
 };
 
-export default Home;
+export default memo<{}>(Home);

@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import React, { memo } from 'react';
 import { View, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -20,13 +21,15 @@ const StyledTextInput = styled(TextInput)`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-const TextField = ({ label, ...props }: Props): React$Node => {
-  return (
-    <Wrapper>
-      <Text color="darkLight">{label}</Text>
-      <StyledTextInput {...props} />
-    </Wrapper>
-  );
+type Props = {
+  label: string,
 };
 
-export default TextField;
+const TextField = ({ label, ...props }: Props): React$Node => (
+  <Wrapper>
+    <Text color="darkLight">{label}</Text>
+    <StyledTextInput {...props} />
+  </Wrapper>
+);
+
+export default memo<Props>(TextField);

@@ -1,5 +1,5 @@
 // @flow
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/native';
 import { useNavigation } from 'react-navigation-hooks';
@@ -122,4 +122,4 @@ const Settings = (): React$Node => {
   );
 };
 
-export default Settings;
+export default memo<{}>(Settings);

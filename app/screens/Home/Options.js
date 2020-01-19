@@ -1,5 +1,5 @@
 // @flow
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import type { ComponentType } from 'react';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -90,4 +90,4 @@ const Options = (props: any): React$Node => {
   );
 };
 
-export default Options;
+export default memo<{}>(Options);

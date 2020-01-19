@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useCallback } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import type { ComponentType } from 'react';
 import styled from 'styled-components/native';
 
@@ -64,7 +64,11 @@ const Option = ({
   }, []);
 
   return (
-    <OptionWrapper height={height} onLayout={handleOnLayout} {...props}>
+    <OptionWrapper
+      height={height}
+      onLayout={handleOnLayout}
+      // $FlowFixMe
+      {...props}>
       <IconWrapper active={active}>
         <Icon width="55%" height="55%" />
       </IconWrapper>
@@ -77,4 +81,4 @@ const Option = ({
   );
 };
 
-export default Option;
+export default memo<Props>(Option);

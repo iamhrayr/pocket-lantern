@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { memo } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -24,17 +24,15 @@ const Container = ({
   transparent,
   withPadding = true,
   children,
-}: Props): React$Node => {
-  return (
-    <Wrapper transparent={transparent} withPadding={withPadding}>
-      <StyledSafeAreaView>
-        <ScrollView contentContainerStyle={styles.contentContainer}>
-          {children}
-        </ScrollView>
-      </StyledSafeAreaView>
-    </Wrapper>
-  );
-};
+}: Props): React$Node => (
+  <Wrapper transparent={transparent} withPadding={withPadding}>
+    <StyledSafeAreaView>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        {children}
+      </ScrollView>
+    </StyledSafeAreaView>
+  </Wrapper>
+);
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -46,4 +44,4 @@ Container.defaultProps = {
   transparent: false,
 };
 
-export default Container;
+export default memo<Props>(Container);

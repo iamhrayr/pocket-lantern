@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import React, { memo } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -21,19 +22,18 @@ type Color = 'primary' | 'secondary' | 'grey' | 'dark' | 'darkLight' | 'ghost';
 
 type Props = {
   color: Color,
+  children: React$Node,
   text: React$Node,
 };
 
-const Button = ({ children, ...props }: Props): React$Node => {
-  return (
-    <StyledButton {...props}>
-      {typeof children === 'string' ? (
-        <StyledText>{children}</StyledText>
-      ) : (
-        children
-      )}
-    </StyledButton>
-  );
-};
+const Button = ({ children, ...props }: Props): React$Node => (
+  <StyledButton {...props}>
+    {typeof children === 'string' ? (
+      <StyledText>{children}</StyledText>
+    ) : (
+      children
+    )}
+  </StyledButton>
+);
 
-export default Button;
+export default memo<Props>(Button);

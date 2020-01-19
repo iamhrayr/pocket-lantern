@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
+import { memo } from 'react';
 import { View, Switch } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -18,9 +20,10 @@ const SwitchRow = ({ label, ...props }: Props): React$Node => {
   return (
     <Wrapper>
       <Text color="darkLight">{label}</Text>
+      {/* $FlowFixMe */}
       <Switch {...props} />
     </Wrapper>
   );
 };
 
-export default SwitchRow;
+export default memo<Props>(SwitchRow);

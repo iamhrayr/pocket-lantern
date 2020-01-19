@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Modal, Text, TouchableHighlight, View, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -63,4 +63,4 @@ const MorseTextModal = ({ isVisible, onClose }): React$Node => {
   );
 };
 
-export default MorseTextModal;
+export default memo(MorseTextModal);

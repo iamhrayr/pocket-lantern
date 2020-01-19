@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import React, { memo } from 'react';
 import type { ComponentType } from 'react';
 import styled, { css } from 'styled-components/native';
 
@@ -13,7 +14,7 @@ type Props = {
   align: TextAlign,
 };
 
-const StyledText: ComponentType = styled.Text`
+const StyledText: ComponentType<Props> = styled.Text`
   ${({ theme, size, color, align }) => css`
     color: ${theme.colors[color] || theme.colors.primary};
     font-size: ${theme.font[size] || theme.font.medium};
@@ -22,9 +23,13 @@ const StyledText: ComponentType = styled.Text`
 `;
 
 const Text = ({ children, size, color, ...rest }: Props): React$Node => (
-  <StyledText size={size} color={color} {...rest}>
+  <StyledText
+    size={size}
+    color={color}
+    //$FlowFixMe
+    {...rest}>
     {children}
   </StyledText>
 );
 
-export default Text;
+export default memo<Props>(Text);

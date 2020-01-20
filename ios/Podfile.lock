@@ -1,4 +1,22 @@
 PODS:
+  - appcenter (2.6.1):
+    - AppCenterReactNativeShared
+    - React
+  - appcenter-analytics (2.6.1):
+    - AppCenter/Analytics
+    - AppCenterReactNativeShared
+    - React
+  - appcenter-crashes (2.6.1):
+    - AppCenter/Crashes
+    - AppCenterReactNativeShared
+    - React
+  - AppCenter/Analytics (2.5.3):
+    - AppCenter/Core
+  - AppCenter/Core (2.5.3)
+  - AppCenter/Crashes (2.5.3):
+    - AppCenter/Core
+  - AppCenterReactNativeShared (2.6.1):
+    - AppCenter/Core (= 2.5.3)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.61.5)
@@ -247,6 +265,8 @@ PODS:
   - React-jsinspector (0.61.5)
   - react-native-safe-area-context (0.6.2):
     - React
+  - react-native-splash-screen (3.2.0):
+    - React
   - react-native-torch (1.1.5):
     - React
   - React-RCTActionSheet (0.61.5):
@@ -308,6 +328,9 @@ PODS:
   - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - appcenter (from `../node_modules/appcenter/ios`)
+  - appcenter-analytics (from `../node_modules/appcenter-analytics/ios`)
+  - appcenter-crashes (from `../node_modules/appcenter-crashes/ios`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -325,6 +348,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-torch (from `../node_modules/react-native-torch`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -350,6 +374,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppCenter
+    - AppCenterReactNativeShared
     - boost-for-react-native
     - Firebase
     - FirebaseAnalytics
@@ -364,6 +390,12 @@ SPEC REPOS:
     - nanopb
 
 EXTERNAL SOURCES:
+  appcenter:
+    :path: "../node_modules/appcenter/ios"
+  appcenter-analytics:
+    :path: "../node_modules/appcenter-analytics/ios"
+  appcenter-crashes:
+    :path: "../node_modules/appcenter-crashes/ios"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -394,6 +426,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-splash-screen:
+    :path: "../node_modules/react-native-splash-screen"
   react-native-torch:
     :path: "../node_modules/react-native-torch"
   React-RCTActionSheet:
@@ -438,6 +472,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppCenter: 765ff38c4d360fc5ec61b61a8be24d74cd6d4d83
+  appcenter: f2e241f931e0865a74b3af3928066a1190814be0
+  appcenter-analytics: 42e368870a904af67fd93f043f3efa75ffa772a2
+  appcenter-crashes: bfc5c03a6ddcfa158fcf4217d1724fd52f45d12c
+  AppCenterReactNativeShared: d90c7165b03171aff31ecbe1424a04b34f64d609
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBLazyVector: aaeaf388755e4f29cd74acbc9e3b8da6d807c37f
@@ -465,6 +504,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
   react-native-safe-area-context: 25260c5d0b9c53fd7aa88e569e2edae72af1f6a3
+  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-torch: bff9b2c4230e183b8cc74c4f0c4cca70bcf16170
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
@@ -487,6 +527,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: b4fc814ae1f258f46a727a1e38113bfce02dfd40
+PODFILE CHECKSUM: 94d88f958f2067b4645a040a9145c9a30b26f98e
 
 COCOAPODS: 1.8.4

@@ -54,7 +54,7 @@ const Settings = (): React$Node => {
       </Title>
 
       <List>
-        <List.Item>
+        {/* <List.Item>
           <SwitchRow
             label="Turn the light on when app starts"
             onValueChange={val => handleChange(val, 'turnOnWhenStarts')}
@@ -74,7 +74,7 @@ const Settings = (): React$Node => {
             onValueChange={val => handleChange(val, 'saveLastChoosenOption')}
             value={settings.saveLastChoosenOption}
           />
-        </List.Item>
+        </List.Item> */}
         <List.Item>
           <TextField
             label="Strobe Interval"

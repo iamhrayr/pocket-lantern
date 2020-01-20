@@ -8,6 +8,7 @@ import SplashScreen from 'react-native-splash-screen';
 import { store, persistor } from 'App/redux/store';
 import AppNavigator from 'App/navigator/AppNavigator';
 import theme from 'App/theme';
+import Container from 'App/components/Container';
 
 const App = (): React$Node => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const App = (): React$Node => {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={<Container />} persistor={persistor}>
           <AppNavigator />
         </PersistGate>
       </Provider>

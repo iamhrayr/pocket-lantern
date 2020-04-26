@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import SplashScreen from 'react-native-splash-screen';
+import codePush from 'react-native-code-push';
 
 import { store, persistor } from 'App/redux/store';
 import AppNavigator from 'App/navigator/AppNavigator';
@@ -26,4 +27,8 @@ const App = (): React$Node => {
   );
 };
 
-export default memo<{}>(App);
+const codePushifiedApp = codePush({
+  checkFrequency: codePush.CheckFrequency.ON_APP_START,
+})(App);
+
+export default memo<{}>(codePushifiedApp);

@@ -50,8 +50,10 @@ const Options = (props: any): React$Node => {
 
   const handleOptionPress = useCallback(
     option => {
-      fireEvent('SET_ACTIVE_OPTION', { option });
-      dispatch(setActiveOption(option));
+      requestAnimationFrame(() => {
+        fireEvent('SET_ACTIVE_OPTION', { option });
+        dispatch(setActiveOption(option));
+      });
     },
     [dispatch, fireEvent],
   );

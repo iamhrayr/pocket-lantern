@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PocketLanternTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PocketLanternTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PocketLanternTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PocketLanternTests.m */; };
+		46451F242454EE890027B5DD /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46451F232454EE890027B5DD /* AppCenter-Config.plist */; };
 		6E4A31A1BF3DA0F4E250D5AC /* libPods-PocketLanternTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 702422432F41F4D7D14A7E05 /* libPods-PocketLanternTests.a */; };
 		74D1AED7BB5F49FD1ACABAD6 /* libPods-PocketLantern.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FC2C3C10B38EC4B7892A87 /* libPods-PocketLantern.a */; };
 		A2C23B2C10CB36A58B5BA1A8 /* libPods-PocketLantern-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD17B88B2636D345C01E8A3 /* libPods-PocketLantern-tvOS.a */; };
@@ -44,10 +44,9 @@
 		00E356EE1AD99517003FC87E /* PocketLanternTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketLanternTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* PocketLanternTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PocketLanternTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* PocketLantern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketLantern.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Pocket Lantern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pocket Lantern.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PocketLantern/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PocketLantern/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PocketLantern/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PocketLantern/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PocketLantern/main.m; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		331163BE986A8170E8AAB154 /* Pods-PocketLantern-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLantern-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-PocketLantern-tvOSTests/Pods-PocketLantern-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		413E2A502E60F651BD8BE9DB /* Pods-PocketLantern.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLantern.debug.xcconfig"; path = "Target Support Files/Pods-PocketLantern/Pods-PocketLantern.debug.xcconfig"; sourceTree = "<group>"; };
 		42D915269959D18E684E86E3 /* libPods-PocketLantern-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PocketLantern-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46451F232454EE890027B5DD /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppCenter-Config.plist"; sourceTree = "<group>"; };
 		467572CD23D50641002FB1B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		467572CF23D50641002FB1B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		702422432F41F4D7D14A7E05 /* libPods-PocketLanternTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PocketLanternTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +132,6 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = PocketLantern;
@@ -201,6 +200,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				46451F232454EE890027B5DD /* AppCenter-Config.plist */,
 				467572CB23D50641002FB1B9 /* Firebase */,
 				13B07FAE1A68108700A75B9A /* PocketLantern */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -217,7 +217,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* PocketLantern.app */,
+				13B07F961A680F5B00A75B9A /* Pocket Lantern.app */,
 				00E356EE1AD99517003FC87E /* PocketLanternTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* PocketLantern-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* PocketLantern-tvOSTests.xctest */,
@@ -267,7 +267,7 @@
 			);
 			name = PocketLantern;
 			productName = PocketLantern;
-			productReference = 13B07F961A680F5B00A75B9A /* PocketLantern.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Pocket Lantern.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* PocketLantern-tvOS */ = {
@@ -368,7 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				46451F242454EE890027B5DD /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,18 +672,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			path = PocketLantern;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -733,6 +721,7 @@
 			baseConfigurationReference = 413E2A502E60F651BD8BE9DB /* Pods-PocketLantern.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = PocketLantern/Info.plist;
@@ -743,7 +732,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketlantern;
-				PRODUCT_NAME = PocketLantern;
+				PRODUCT_NAME = "Pocket Lantern";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -753,6 +742,7 @@
 			baseConfigurationReference = A5DE94BF677968A6E2E35699 /* Pods-PocketLantern.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = PocketLantern/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -762,7 +752,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketlantern;
-				PRODUCT_NAME = PocketLantern;
+				PRODUCT_NAME = "Pocket Lantern";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

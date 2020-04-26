@@ -1,6 +1,6 @@
 // @flow
 import React, { memo, useCallback } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, SafeAreaView } from 'react-native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from 'react-navigation-hooks';
@@ -26,14 +26,18 @@ const Home = (): React$Node => {
 
   const { navigate } = useNavigation();
   const changeRoute = useCallback(() => {
-    navigate(routes.SETTINGS);
+    requestAnimationFrame(() => {
+      navigate(routes.SETTINGS);
+    });
   }, [navigate]);
 
   return (
     <Container withPadding={false}>
-      <StyledCogButton onPress={changeRoute}>
-        <Icon name="cog" size={30} color="#dbdbdb" />
-      </StyledCogButton>
+      <SafeAreaView>
+        <StyledCogButton onPress={changeRoute}>
+          <Icon name="cog" size={30} color="#dbdbdb" />
+        </StyledCogButton>
+      </SafeAreaView>
 
       <StyledOptions />
       <TorchSwitch />

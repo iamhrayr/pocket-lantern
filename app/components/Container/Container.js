@@ -1,11 +1,16 @@
 // @flow
 import React, { memo } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import {
+  // SafeAreaView,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 import styled from 'styled-components/native';
 
-const StyledSafeAreaView = styled(SafeAreaView)`
-  flex: 1;
-`;
+// const StyledSafeAreaView = styled(SafeAreaView)`
+//   flex: 1;
+//   /* background-color: red; */
+// `;
 
 const Wrapper = styled.View`
   flex: 1;
@@ -26,11 +31,11 @@ const Container = ({
   children,
 }: Props): React$Node => (
   <Wrapper transparent={transparent} withPadding={withPadding}>
-    <StyledSafeAreaView>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        {children}
-      </ScrollView>
-    </StyledSafeAreaView>
+    {/* <StyledSafeAreaView> */}
+    <ScrollView contentContainerStyle={styles.contentContainer}>
+      {children}
+    </ScrollView>
+    {/* </StyledSafeAreaView> */}
   </Wrapper>
 );
 

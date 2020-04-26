@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "742110144219",
+    "firebase_url": "https://pocket-lantern-dev.firebaseio.com",
+    "project_id": "pocket-lantern-dev",
+    "storage_bucket": "pocket-lantern-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742110144219:android:bb3579c955d8a422664efe",
+        "android_client_info": {
+          "package_name": "com.pocketlantern"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742110144219-rfi2snbp0mubddoq2427q92a39m3aujn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpeixDnz4ygea2_kOQApiKQsm_THzzcUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742110144219-rfi2snbp0mubddoq2427q92a39m3aujn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

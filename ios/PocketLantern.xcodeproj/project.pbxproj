@@ -44,7 +44,7 @@
 		00E356EE1AD99517003FC87E /* PocketLanternTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketLanternTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* PocketLanternTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PocketLanternTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Pocket Lantern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pocket Lantern.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* PocketLantern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketLantern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PocketLantern/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PocketLantern/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PocketLantern/Images.xcassets; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Pocket Lantern.app */,
+				13B07F961A680F5B00A75B9A /* PocketLantern.app */,
 				00E356EE1AD99517003FC87E /* PocketLanternTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* PocketLantern-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* PocketLantern-tvOSTests.xctest */,
@@ -267,7 +267,7 @@
 			);
 			name = PocketLantern;
 			productName = PocketLantern;
-			productReference = 13B07F961A680F5B00A75B9A /* Pocket Lantern.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* PocketLantern.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* PocketLantern-tvOS */ = {
@@ -736,7 +736,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketlantern;
-				PRODUCT_NAME = "Pocket Lantern";
+				PRODUCT_NAME = PocketLantern;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -757,7 +757,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketlantern;
-				PRODUCT_NAME = "Pocket Lantern";
+				PRODUCT_NAME = PocketLantern;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

@@ -735,7 +735,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pocketlantern;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pocketlantern.app;
 				PRODUCT_NAME = "Pocket Lantern";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -756,7 +756,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pocketlantern;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pocketlantern.app;
 				PRODUCT_NAME = "Pocket Lantern";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

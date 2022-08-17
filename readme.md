@@ -1,3 +1,6 @@
+Android App link - https://play.google.com/store/apps/details?id=com.pocketlantern&hl=en&gl=US
+iOS App Link - https://apps.apple.com/am/app/pocket-lantern/id1510650518
+
 # Android
 
 **Release**

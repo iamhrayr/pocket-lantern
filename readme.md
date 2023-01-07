@@ -2,6 +2,9 @@ Android App link - https://play.google.com/store/apps/details?id=com.pocketlante
 
 iOS App Link - https://apps.apple.com/am/app/pocket-lantern/id1510650518
 
+<img width="368" alt="image" src="https://user-images.githubusercontent.com/24793677/211167890-48810f42-ced7-4a49-b2c3-55c2c58465d4.png">
+
+
 # Android
 
 **Release**
